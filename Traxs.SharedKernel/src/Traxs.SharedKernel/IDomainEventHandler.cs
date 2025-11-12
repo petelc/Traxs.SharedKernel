@@ -1,6 +1,7 @@
+using MediatR;
+
 namespace Traxs.SharedKernel;
 
-public interface IDomainEventHandler
+public interface IDomainEventHandler<T> : INotificationHandler<T> where T : IDomainEvent
 {
-
 }
