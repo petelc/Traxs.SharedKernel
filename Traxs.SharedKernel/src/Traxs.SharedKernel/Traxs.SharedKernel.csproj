@@ -1,10 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <!-- <PropertyGroup>
+  <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-  </PropertyGroup> -->
+    <!-- NuGet Package Properties -->
+    <PackageId>Traxs.SharedKernel</PackageId>
+    <Title>Traxs Shared Kernel</Title>
+    <Description>A shared kernel library for domain-driven design, providing base classes for entities, value objects, aggregates, and domain event handling.</Description>
+    <Authors>Pete Carroll</Authors>
+    <PackageProjectUrl>https://github.com/petelc/Traxs.SharedKernel</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/petelc/Traxs.SharedKernel</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <!-- GitHub Packages Configuration -->
+    <PackageOutputPath>$(MSBuildThisFileDirectory)bin/Release</PackageOutputPath>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Ardalis.GuardClauses" />
