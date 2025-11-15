@@ -5,7 +5,8 @@ on:
     types: [published]
 
 env:
-  SOLUTION_FILE: Traxs.SharedKernel.sln
+  PROJECT_FILE: Traxs.SharedKernel/src/Traxs.SharedKernel/Traxs.SharedKernel.csproj
+  TEST_PROJECT: Traxs.SharedKernel/tests/Traxs.SharedKernel.UnitTests/Traxs.SharedKernel.UnitTests.csproj
   PACK_OUTPUT: artifacts/package/release
 
 jobs:
@@ -27,16 +28,16 @@ jobs:
           dotnet nuget add source --username petelc --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/petelc/index.json"
 
       - name: Restore dependencies
-        run: dotnet restore "${{ env.SOLUTION_FILE }}"
+        run: dotnet restore "${{ env.PROJECT_FILE }}"
 
       - name: Build
-        run: dotnet build "${{ env.SOLUTION_FILE }}" --configuration Release
+        run: dotnet build "${{ env.PROJECT_FILE }}" --configuration Release --no-restore
 
       - name: Test
-        run: dotnet test "${{ env.SOLUTION_FILE }}" --configuration Release --no-build --no-restore
+        run: dotnet test "${{ env.TEST_PROJECT }}" --configuration Release --no-build --no-restore
 
       - name: Pack
-        run: dotnet pack "${{ env.SOLUTION_FILE }}" --configuration Release --no-build --no-restore --output "${{ env.PACK_OUTPUT }}"
+        run: dotnet pack "${{ env.PROJECT_FILE }}" --configuration Release --no-build --no-restore --output "${{ env.PACK_OUTPUT }}"
 
       - name: Publish to GitHub Packages
         run: dotnet nuget push "${{ env.PACK_OUTPUT }}/*.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/petelc/index.json --skip-duplicate
