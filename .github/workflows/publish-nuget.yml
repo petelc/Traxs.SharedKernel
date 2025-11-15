@@ -17,6 +17,9 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
+      - name: Configure NuGet credentials
+        run: dotnet nuget add source --username petelc --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/petelc/index.json"
+
       - name: Restore dependencies
         run: dotnet restore
 
