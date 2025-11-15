@@ -5,10 +5,9 @@ on:
     types: [published]
 
 env:
-  SOLUTION_FILE: Traxs.SharedKernel.sln
-  PROJECT_FILE: Traxs.SharedKernel/src/Traxs.SharedKernel/Traxs.SharedKernel.csproj
-  TEST_PROJECT: Traxs.SharedKernel/tests/Traxs.SharedKernel.UnitTests/Traxs.SharedKernel.UnitTests.csproj
-  PACK_OUTPUT: artifacts/package/release
+  PROJECT_FILE: ./Traxs.SharedKernel/src/Traxs.SharedKernel/Traxs.SharedKernel.csproj
+  TEST_PROJECT: ./Traxs.SharedKernel/tests/Traxs.SharedKernel.UnitTests/Traxs.SharedKernel.UnitTests.csproj
+  PACK_OUTPUT: ./artifacts/package/release
 
 jobs:
   publish:
@@ -23,16 +22,20 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
+      - name: Verify configuration files
+        run: |
+          echo "Repository structure:"
+          ls -la
+          echo "Directory.Packages.props location:"
+          find . -name "Directory.Packages.props" -type f
+
       - name: Configure NuGet credentials
         run: |
           dotnet nuget remove source github || true
           dotnet nuget add source --username petelc --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/petelc/index.json"
 
-      - name: Restore main project dependencies
-        run: dotnet restore "${{ env.PROJECT_FILE }}"
-
-      - name: Restore test project dependencies
-        run: dotnet restore "${{ env.TEST_PROJECT }}"
+      - name: Restore dependencies
+        run: dotnet restore "${{ env.PROJECT_FILE }}" && dotnet restore "${{ env.TEST_PROJECT }}"
 
       - name: Build
         run: dotnet build "${{ env.PROJECT_FILE }}" --configuration Release --no-restore
