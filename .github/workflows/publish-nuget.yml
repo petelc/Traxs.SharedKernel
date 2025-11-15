@@ -5,7 +5,7 @@ on:
     types: [published]
 
 env:
-  SOLUTION_FILE: Traxs.SharedKernel/Traxs.SharedKernel.sln
+  SOLUTION_FILE: Traxs.SharedKernel.sln
   PROJECT_FILE: Traxs.SharedKernel/src/Traxs.SharedKernel/Traxs.SharedKernel.csproj
   TEST_PROJECT: Traxs.SharedKernel/tests/Traxs.SharedKernel.UnitTests/Traxs.SharedKernel.UnitTests.csproj
   PACK_OUTPUT: artifacts/package/release
