@@ -5,10 +5,10 @@
     <File Path="Directory.Packages.props" />
   </Folder>
   <Folder Name="/src/">
-    <Project Path="src/Traxs.SharedKernel/Traxs.SharedKernel.csproj" />
+    <Project Path="Traxs.SharedKernel/src/Traxs.SharedKernel/Traxs.SharedKernel.csproj" />
   </Folder>
   <Folder Name="/tests/">
-    <File Path="GlobalUsings.cs" />
-    <Project Path="tests/Traxs.SharedKernel.UnitTests/Traxs.SharedKernel.UnitTests.csproj" />
+    <File Path="Traxs.SharedKernel/GlobalUsings.cs" />
+    <Project Path="Traxs.SharedKernel/tests/Traxs.SharedKernel.UnitTests/Traxs.SharedKernel.UnitTests.csproj" />
   </Folder>
 </Solution>
