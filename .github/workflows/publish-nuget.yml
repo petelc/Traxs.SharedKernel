@@ -28,7 +28,7 @@ jobs:
           dotnet nuget add source --username petelc --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/petelc/index.json"
 
       - name: Restore dependencies
-        run: dotnet restore "${{ env.PROJECT_FILE }}"
+        run: dotnet restore
 
       - name: Build
         run: dotnet build "${{ env.PROJECT_FILE }}" --configuration Release --no-restore
