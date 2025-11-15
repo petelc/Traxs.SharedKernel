@@ -5,7 +5,7 @@ on:
     types: [published]
 
 env:
-  SOLUTION_FILE: Traxs.SharedKernel.slnx
+  SOLUTION_FILE: Traxs.SharedKernel.sln
   PACK_OUTPUT: artifacts/package/release
 
 jobs:
