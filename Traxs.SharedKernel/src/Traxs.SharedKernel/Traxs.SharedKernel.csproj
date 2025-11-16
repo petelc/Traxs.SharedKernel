@@ -9,6 +9,7 @@
     <Title>Traxs Shared Kernel</Title>
     <Description>A shared kernel library for domain-driven design, providing base classes for entities, value objects, aggregates, and domain event handling.</Description>
     <Authors>Pete Carroll</Authors>
+    <Version>0.1.1</Version>
     <PackageProjectUrl>https://github.com/petelc/Traxs.SharedKernel</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/petelc/Traxs.SharedKernel</RepositoryUrl>
@@ -18,6 +19,7 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <!-- GitHub Packages Configuration -->
     <PackageOutputPath>$(MSBuildThisFileDirectory)bin/Release</PackageOutputPath>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,6 +28,7 @@
     <PackageReference Include="MediatR" />
     <PackageReference Include="Mediator.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+    <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
